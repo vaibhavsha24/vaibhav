@@ -30,6 +30,8 @@ dependencies:
   flutter:
     sdk: flutter
   percent_indicator: ^4.0.1
+  url_launcher: ^5.7.10
+  universal_html: ^2.0.8
 
 
   # The following adds the Cupertino Icons font to your application.

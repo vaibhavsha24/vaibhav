@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import 'package:url_launcher/url_launcher.dart';
+import 'package:universal_html/html.dart' as html;
+import 'package:flutter/foundation.dart';
 
 void main() {
   runApp(home());
@@ -82,7 +87,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
             Material(
               child: InkWell(
-                onTap: () {}, // Handle your callback.
+                onTap: () {
+                  String url = 'https://www.linkedin.com/in/vaibhavsharma24/';
+                  if(kIsWeb) {
+                    html.window.open(url, '_blank');
+                  }
+                  },
+    // Handle your callback.
                 splashColor: Colors.brown.withOpacity(0.5),
                 child: Ink(
                   height: 100,
@@ -102,7 +113,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
             , Material(
               child: InkWell(
-                onTap: () {}, // Handle your callback.
+                onTap: () {
+                  launch('tel:+91 7062134288');
+                }, // Handle your callback.
                 splashColor: Colors.brown.withOpacity(0.5),
                 child: Ink(
                   height: 70,
@@ -119,7 +132,10 @@ class _MyHomePageState extends State<MyHomePage> {
             ,
             Material(
               child: InkWell(
-                onTap: () {}, // Handle your callback.
+                onTap: () {
+
+                  launch('mailto:vaibhavbabu3475@gmail.com?subject=');
+                }, // Handle your callback.
                 splashColor: Colors.brown.withOpacity(0.5),
                 child: Ink(
                   height: 100,
@@ -137,7 +153,14 @@ class _MyHomePageState extends State<MyHomePage> {
             ,
             Material(
               child: InkWell(
-                onTap: () {}, // Handle your callback.
+                onTap: () {
+
+                  String url = 'https://github.com/vaibhavsha24/';
+                  if(kIsWeb) {
+                    html.window.open(url, '_blank');
+                  }
+
+                }, // Handle your callback.
                 splashColor: Colors.brown.withOpacity(0.5),
                 child: Ink(
                   height: 100,
@@ -210,7 +233,13 @@ class _MyHomePageState extends State<MyHomePage> {
                               color: Colors.orangeAccent,
                               decoration: TextDecoration.none),)
                           ,
-                          ElevatedButton(onPressed: () {},
+                          ElevatedButton(onPressed: () {
+                            String url = 'https://drive.google.com/file/d/1r53IFragDfhC_G9QWe8BHEN8CaMfCYdC/view?usp=sharing';
+                            if(kIsWeb) {
+                              html.window.open(url, '_blank');
+                            }
+
+                          },
                             child: Text("Download Resume",
                               style: TextStyle(color: Colors.white),
 
@@ -1195,7 +1224,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         height: 300.0,
                         width: 300.0, alignment: Alignment.center,),
 
-                      ElevatedButton(onPressed: () {},
+                      ElevatedButton(onPressed: () {
+
+                        String url = 'https://github.com/vaibhavsha24/sangchalo';
+                        if(kIsWeb) {
+                          html.window.open(url, '_blank');
+                        }
+                      },
                         child: Text("Github Repository",
                           style: TextStyle(color: Colors.white),
 
@@ -1244,13 +1279,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children:[
-                                    Text("My Chat App ", style: TextStyle(fontSize: 35.0,
+                                    Text("Baate ", style: TextStyle(fontSize: 35.0,
                                         decoration: TextDecoration.none,
                                         color: Colors.orangeAccent),),
                                     Container(
                                       padding: EdgeInsets.only(top:20.0),
                                       width: 500.0,
-                                      child: Text("My Chat is an Android Chat Application. Registered Users can have private chat with their contacts saved and are registered on the"
+                                      child: Text("Baate is an Android Chat Application. Registered Users can have private chat with their contacts saved and are registered on the"
                                           "app. I build using Kotlin and used Firebase AUthentication and Firebease realtime database for the Chat.", style: TextStyle(fontSize: 20.0,
                                           decoration: TextDecoration.none,
                                           color: Colors.white),),
@@ -1268,7 +1303,12 @@ class _MyHomePageState extends State<MyHomePage> {
                           height: 300.0,
                           width: 300.0, alignment: Alignment.center,),
 
-                        ElevatedButton(onPressed: () {},
+                        ElevatedButton(onPressed: () {
+                          String url = 'https://github.com/vaibhavsha24/Baate';
+                          if(kIsWeb) {
+                            html.window.open(url, '_blank');
+                          }
+                        },
                           child: Text("Github Repository",
                             style: TextStyle(color: Colors.white),
 
@@ -1339,7 +1379,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           height: 300.0,
                           width: 300.0, alignment: Alignment.center,),
 
-                        ElevatedButton(onPressed: () {},
+                        ElevatedButton(onPressed: () {
+
+                          String url = 'https://github.com/keshavsharma24/cigapp';
+                          if(kIsWeb) {
+                            html.window.open(url, '_blank');
+                          }
+                        },
                           child: Text("Github Repository",
                             style: TextStyle(color: Colors.white),
 
@@ -1370,6 +1416,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
     )
     );
+  }
+  void openLink() async {
+    String url = 'https://flutter.dev';
+    if(kIsWeb) {
+      html.window.open(url, '_blank');
+    } else {
+      if(await canLaunch(url)) {
+        launch(url);
+      }
+    }
   }
 
 }
